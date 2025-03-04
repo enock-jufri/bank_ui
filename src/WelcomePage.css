@@ -1,0 +1,374 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    overflow: auto; /* Ensure scrolling is enabled */
+}
+
+body {
+    background-color: hsl(0, 100%, 99%);
+    color: #333;
+}
+
+/* Welcome Page Container */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: auto; /* Adjust height to auto */
+    min-height: 100vh; /* Ensure it takes at least the full viewport height */
+    overflow: auto; /* Ensure scrolling within the container */
+    color: #ffffff;
+    padding: 0px;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #002a80;
+    color: white;
+    position: fixed; /* Fix the navbar at the top */
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-links li:hover {
+    color: #ffcc00;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; /* Adjust height to full viewport height */
+    color: rgb(248, 244, 244);
+    position: relative;
+    text-align: center;
+    background: url("https://kenyabankinginsights.co.ke/wp-content/uploads/2024/12/bank_albom_260915.jpeg");
+    margin-top: 60px; /* Add margin to account for fixed navbar */
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 42, 128, 0.6);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #ffcc00;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: white;
+}
+.hero-image {
+    width: 50%; /* Reduce width */
+    max-height: 350px; /* Set max height */
+}
+
+
+.get-started-btn {
+    background: #ffcc00;
+    color: #002a80;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.get-started-btn:hover {
+    background: #0f963c;
+    color: white;
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 40px;
+    width: 100%;
+    text-align: center;
+    background: rgb(243, 243, 245);
+    color: #333;
+}
+
+
+.benefits h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #0b0e36;
+}
+.benefit-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.benefit-item {
+    background: rgb(253, 249, 249);
+    color: #002a80;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+  /* Services Section */
+  .services {
+    background: url('/assets/services-bg.jpg'); 
+    padding: 40px;
+    background: #f7f3f3;
+  }
+  .services h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #0b0e36;
+  }
+  .services p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    width: 100%;
+    color: #002a80;
+    font-size: 20px;
+  }
+  .service-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .service-item {
+    background: #f5f1f1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 410px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-item h3{
+    color: #0b0e36;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+/* Footer Section */
+.footer {
+    background: #002a80;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-logo-img {
+    width: 100px;
+    height: 100px;
+}
+
+.footer-contact h3, .social-icons h3 {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.footer h1{
+    color: rgb(165, 27, 27);
+    font-size: 2.5rem;
+}
+
+.social-icons a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: 0.3s;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.social-icons a:hover {
+    color: #ffcc00;
+}
+
+.footer-bottom {
+    margin-top: 190px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.service-image {
+    width: 300px; /* Reduce size */
+    height: auto; /* Maintain aspect ratio */
+}
+.footer-logo-img {
+    width: 130px; /* Reduce size */
+    height: 130px;
+}
+/* How We Work Section */
+.how-we-work {
+    background: rgb(243, 243, 245);
+    color: #333;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.how-we-work h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.how-we-work p {
+    font-size: 1.1rem;
+    color: #0a398f;
+    margin-bottom: 25px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
+/* Work Steps Grid */
+.work-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+/* Individual Work Step Box */
+.work-step {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.work-step:hover {
+    transform: translateY(-5px);
+}
+
+.work-step h3 {
+    color: #007bff;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.work-step p {
+    font-size: 1rem;
+    color: #333;
+}
+
+  .testimonials {
+    background-color: #f8f9fa;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .testimonials h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .testimonial-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    text-align: left;
+  }
+  
+  .testimonial-item p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .testimonial-item strong {
+    font-size: 1.1rem;
+    color: #222;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .testimonial-item::before {
+    content: "“";
+    font-size: 3rem;
+    color: #007bff;
+    position: relative;
+    top: 10px;
+    left: -5px;
+  }
+  
+  .testimonial-item::after {
+    content: "”";
+    font-size: 3rem;
+    color: #007bff;
+    position: relative;
+    bottom: -5px;
+    right: -5px;
+  }

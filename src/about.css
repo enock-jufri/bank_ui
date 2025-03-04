@@ -1,0 +1,83 @@
+.about-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, #031a6b, #0044cc);
+  }
+  
+  .about-content {
+    display: flex;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+  }
+  
+  /* Text Section */
+  .about-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+  }
+  /* .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+  } */
+  
+  .about-section {
+    margin-top: 20px;
+  }
+  
+  .about-section h2 {
+    color: #ffcc00;
+  }
+  /* About Sections */
+  .about-section {
+    margin-top: 30px;
+    padding: 20px;
+    border-left: 5px solid #ffdd57;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .about-section:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 20px rgba(255, 221, 87, 0.3);
+  }
+  
+  /* Section Headings */
+  .about-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #ffdd57;
+    text-transform: uppercase;
+  }
+  .about-image {
+    flex: 1;
+    background: url("https://images.unsplash.com/photo-1565347878134-064b9185ced8?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center center/cover;
+    width: 50vw; /* Make sure it takes half the page */
+    height: 100vh; /* Full height */
+  }
+  
+  .about-image img {
+    display: none; /* Hide img tag, only use background */
+  }
+  .back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background: #0056b3;
+  }

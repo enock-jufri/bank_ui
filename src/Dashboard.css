@@ -1,0 +1,565 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: auto;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto; /* Ensure the container is scrollable */
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #0c0f1f;
+  color: #ffffff;
+}
+
+.dark-mode body {
+  background-color: #0c0f1f;
+  color: #ffffff;
+}
+
+.dark-mode .theme-toggle {
+  background: #ddd;
+  color: #000;
+}
+
+.dark-mode .balance-section,
+.dark-mode .transactions,
+.dark-mode .money-operations,
+.dark-mode .request-popup,
+.dark-mode .transaction-history {
+  background: #131a35;
+  color: #ffffff;
+}
+
+.dark-mode .transactions th,
+.dark-mode .transaction-history th {
+  background: #1b2447;
+  color: #ffffff;
+}
+
+.dark-mode h2 {
+  color: #ffffff;
+}
+
+/* Light Mode */
+.light-mode {
+  background-color: #f0f2f5;
+  color: #000000;
+}
+
+.light-mode body {
+  background-color: #f0f2f5;
+  color: #000000;
+}
+
+.light-mode .theme-toggle {
+  background: #ddd;
+  color: #000;
+}
+
+.light-mode .balance-section,
+.light-mode .transactions,
+.light-mode .money-operations,
+.light-mode .request-popup,
+.light-mode .transaction-history {
+  background: #ffffff;
+  color: #000;
+}
+
+.light-mode .transactions th,
+.light-mode .transaction-history th {
+  background: #ddd;
+  color: #000;
+}
+
+.light-mode h2 {
+  color: #000;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-toggle,
+.logout-btn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-btn {
+  background: #ff4c4c;
+}
+
+.logout-btn:hover {
+  background: #d43f3f;
+}
+
+/* Layout */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  overflow: hidden;
+  padding: 1rem 2rem;
+}
+
+/* Left Side */
+.left-section {
+  width: 50%;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.balance-section {
+  background: #131a35;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.balance-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center align items vertically */
+  height: 60px; /* Adjust the height as needed */
+}
+
+.balance-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.balance-info h2 {
+  margin: 0;
+  font-size: 1.8rem; /* Increased from 1.5rem */
+}
+
+.balance-info .account-number {
+  margin: 5px 0 0 0;
+  font-size: 1.1rem; /* Increased from 0.9rem */
+  color: #888;
+  font-family: 'Courier New', monospace;
+}
+
+.balance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.balance-container h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #4caf50;
+}
+
+.balance {
+  font-size: 54px; /* Increased from 48px */
+  font-family: 'Courier New', Courier, monospace;
+  color: #4caf50 !important;
+  text-align: left;
+}
+
+.summary-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.sent span {
+  color: #ff4c4c;
+}
+
+.received span {
+  color: #4caf50;
+}
+
+.transaction-history {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0; /* Add this to ensure flex child can shrink */
+}
+
+.transaction-history .transaction-filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background: inherit;
+  z-index: 1;
+}
+
+.transaction-history .transaction-filters input,
+.transaction-history .transaction-filters select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.transaction-history-table {
+  flex: 1;
+  overflow: auto;
+  min-height: 0; /* Add this to ensure proper scrolling */
+}
+
+.transaction-history table {
+  width: 100%;
+  border-collapse: collapse;
+  height: 100%;
+}
+
+.transaction-history th,
+.transaction-history td {
+  padding: 12px; /* Increased from 10px */
+  text-align: left;
+  font-size: 1.1rem; /* Added font size */
+}
+
+.transaction-history th {
+  background: #1b2447;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+  z-index: 1;
+}
+
+.transaction-history td {
+  background: #131a35;
+  color: #ffffff;
+}
+
+/* Right Side */
+.right-section {
+  width: 50%;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.money-operations,
+.live-transactions {
+  background: #131a35;
+  padding: 0 20px 20px 20px; /* Removed top padding, kept others */
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.money-operations h2 {
+  margin-top: 15px; /* Add a smaller top margin to maintain some spacing */
+  margin-bottom: 15px;
+}
+
+.money-operations .buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.money-operations .buttons button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.money-operations .buttons button:first-child {
+  margin-left: 0;
+}
+
+.money-operations .buttons button:last-child {
+  margin-right: 0;
+}
+
+.money-operations .input-field {
+  width: 60%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  align-self: flex-start;
+}
+
+.money-operations .transaction-inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.money-operations .buttons button.selected {
+  transform: scale(0.98);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+.money-operations .buttons button:not(.selected):hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.process-btn {
+  width: auto;
+  padding: 8px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.process-btn:hover {
+  background: #0056b3;
+}
+
+.process-btn:active {
+  transform: scale(0.98);
+}
+
+.input-field {
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+/* Live Transactions */
+.live-transactions {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.live-transactions-chart {
+  flex-grow: 1;
+  width: 100%;
+}
+
+/* Request Money Popup */
+.request-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #131a35;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure the Doughnut Chart is smaller and fits well */
+.doughnut-chart {
+  width: 100%;
+  height: 200px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    padding: 1rem;
+    overflow: auto; /* Ensure the main content is scrollable */
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+    padding: 0;
+  }
+
+  .balance-section, .transaction-history, .money-operations, .live-transactions {
+    margin-bottom: 20px;
+  }
+
+  .transaction-history {
+    min-height: 400px; /* Set minimum height for mobile */
+  }
+
+  .transaction-history-table {
+    min-height: 300px;
+  }
+
+  .dashboard-container {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .header {
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .main-content {
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  .left-section, 
+  .right-section {
+    width: 100%;
+    padding: 0;
+  }
+
+  .balance-section {
+    padding: 1rem;
+  }
+
+  .balance-info-container {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .balance-info .account-number {
+    text-align: center;
+    width: 100%;
+  }
+
+  .summary-chart {
+    width: 100%;
+  }
+
+  .doughnut-chart {
+    height: 150px;
+  }
+
+  .balance {
+    font-size: 38px; /* Increased from 32px */
+    text-align: center;
+  }
+
+  .money-operations .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .money-operations .buttons button {
+    margin: 0;
+    padding: 15px;
+  }
+
+  .transaction-history-table {
+    max-height: 300px;
+    font-size: 16px; /* Increased from 14px */
+  }
+
+  .transaction-filters {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .transaction-filters input,
+  .transaction-filters select {
+    width: 100%;
+  }
+
+  .live-transactions {
+    height: 300px;
+  }
+
+  .money-operations .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .money-operations .buttons button {
+    width: 100%;
+    margin: 0;
+  }
+
+  .money-operations .input-field {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .transaction-inputs {
+    padding: 0 10px;
+  }
+}
+
+/* Add styles for even smaller screens */
+@media (max-width: 480px) {
+  .balance {
+    font-size: 32px; /* Increased from 28px */
+  }
+
+  .transaction-history table {
+    font-size: 14px; /* Increased from 12px */
+  }
+
+  .money-operations .buttons button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .notification {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Add touch-friendly styles */
+@media (hover: none) {
+  .money-operations .buttons button:active {
+    opacity: 0.7;
+  }
+
+  .input-field {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px;  /* Larger touch target */
+  }
+
+  select {
+    height: 44px; /* Larger touch target */
+  }
+}
