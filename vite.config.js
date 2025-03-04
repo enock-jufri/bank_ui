@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://bank-db.onrender.com",  // Update the target to match the correct backend server URL
+        target: "https://bank-db.onrender.com",  // Ensure this URL is correct
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },

@@ -48,7 +48,12 @@ const AuthForm = () => {
       });
 
       const text = await response.text();
-      const result = text ? JSON.parse(text) : {};
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch (err) {
+        throw new Error("Invalid JSON response");
+      }
 
       if (!response.ok) {
         throw new Error(result.message || "Something went wrong");
