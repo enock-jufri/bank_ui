@@ -35,31 +35,20 @@ const AuthForm = () => {
     setLoading(true);
     setError("");
 
-    const endpoint = isLogin ? "https://bank-db.onrender.com/login" : "https://bank-db.onrender.com/register";
+    const endpoint = isLogin ? "/api/login" : "/api/register";
     const payload = isLogin
       ? { username: formData.username, password: formData.password }
       : formData;
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000); // Set timeout to 10 seconds
 
     try {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        signal: controller.signal,
       });
 
-      clearTimeout(timeoutId);
-
       const text = await response.text();
-      let result;
-      try {
-        result = JSON.parse(text);
-      } catch (err) {
-        throw new Error("Invalid JSON response");
-      }
+      const result = text ? JSON.parse(text) : {};
 
       if (!response.ok) {
         throw new Error(result.message || "Something went wrong");
