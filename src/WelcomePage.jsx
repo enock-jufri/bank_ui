@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./WelcomePage.css";
-import Footer from "./Footer"; // Fix: Import Footer properly
-import "./Particles.jsx";
+import Footer from "./Footer";
+
 const WelcomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="welcome-container">
+    <div className="welcome-container"d >
       {/* Navigation Bar */}
       <nav className="navbar">
         <h2 className="logo">MODERN BANK</h2>
@@ -18,7 +18,6 @@ const WelcomePage = () => {
           <li onClick={() => navigate("/contact")}>Contact</li>
         </ul>
       </nav>
-
 
       {/* Hero Section */}
       <div className="hero-section">
@@ -59,44 +58,37 @@ const WelcomePage = () => {
         </div>
       </div>
 
-     {/* How We Work */}
-<div className="how-we-work">
-  <h2>How We Work</h2>
-  <p>At Modern Bank, we prioritize your financial well-being by offering innovative and secure banking solutions.</p>
-  
-  <div className="work-steps">
-    <div className="work-step">
-      <h3>Account Management</h3>
-      <p>Easily open and manage accounts, update details, and track transactions.</p>
-    </div>
-
-    <div className="work-step">
-      <h3>Online & Mobile Banking</h3>
-      <p>Access banking services anytime, including bill payments, transfers, and statements.</p>
-    </div>
-
-    <div className="work-step">
-      <h3>Investment & Savings</h3>
-      <p>Grow your wealth with our investment plans, high-yield savings, and financial advisory services.</p>
-    </div>
-
-    <div className="work-step">
-      <h3>Business Banking</h3>
-      <p>Customized banking solutions for businesses, including payroll management and business loans.</p>
-    </div>
-
-    <div className="work-step">
-      <h3>Loan & Credit Facilities</h3>
-      <p>Get quick personal or business loans with flexible repayment terms.</p>
-    </div>
-
-    <div className="work-step">
-      <h3>Customer Support</h3>
-      <p>Our support team is available 24/7 via phone, email, and live chat.</p>
-    </div>
-  </div>
-</div>
-
+      {/* How We Work */}
+      <div className="how-we-work">
+        <h2>How We Work</h2>
+        <p>At Modern Bank, we prioritize your financial well-being by offering innovative and secure banking solutions.</p>
+        <div className="work-steps">
+          <div className="work-step">
+            <h3>Account Management</h3>
+            <p>Easily open and manage accounts, update details, and track transactions.</p>
+          </div>
+          <div className="work-step">
+            <h3>Online & Mobile Banking</h3>
+            <p>Access banking services anytime, including bill payments, transfers, and statements.</p>
+          </div>
+          <div className="work-step">
+            <h3>Investment & Savings</h3>
+            <p>Grow your wealth with our investment plans, high-yield savings, and financial advisory services.</p>
+          </div>
+          <div className="work-step">
+            <h3>Business Banking</h3>
+            <p>Customized banking solutions for businesses, including payroll management and business loans.</p>
+          </div>
+          <div className="work-step">
+            <h3>Loan & Credit Facilities</h3>
+            <p>Get quick personal or business loans with flexible repayment terms.</p>
+          </div>
+          <div className="work-step">
+            <h3>Customer Support</h3>
+            <p>Our support team is available 24/7 via phone, email, and live chat.</p>
+          </div>
+        </div>
+      </div>
 
       {/* Services Section */}
       <div className="services">
@@ -158,8 +150,6 @@ const WelcomePage = () => {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
       <Footer />
     </div>
   );
