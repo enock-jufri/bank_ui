@@ -125,8 +125,8 @@ const Dashboard = () => {
 
   const fetchUserData = async (username) => {
     try {
-      const userResponse = await axios.get(`/api/user/${username}`);
-      const transactionsResponse = await axios.get(`/api/user/${username}/transactions`);
+      const userResponse = await axios.get(`https://bank-db.onrender.com/user/${username}`);
+      const transactionsResponse = await axios.get(`https://bank-db.onrender.com/user/${username}/transactions`);
       setBalance(userResponse.data.balance);
       setTransactions(transactionsResponse.data.transactions);
       setUsername(userResponse.data.username); // Set the username from the response
@@ -140,7 +140,7 @@ const Dashboard = () => {
 
   const fetchTransactionSummary = async (username) => {
     try {
-      const response = await axios.get(`/api/user/${username}/transaction-summary`);
+      const response = await axios.get(`https://bank-db.onrender.com/user/${username}/transaction-summary`);
       if (response.data.success) {
         const { sent, received } = response.data.data;
         setTransactionSummary({
@@ -156,7 +156,7 @@ const Dashboard = () => {
 
   const handleTransaction = async (transactionType) => {
     try {
-      const response = await axios.post('/api/transaction', {
+      const response = await axios.post('https://bank-db.onrender.com/transaction', {
         username,
         transaction_type: transactionType,
         amount: parseFloat(amount),
@@ -174,7 +174,7 @@ const Dashboard = () => {
       fetchTransactionSummary(username); // Refresh the summary data
       
       // Fetch recipient details for notification
-      const recipientResponse = await axios.get(`/api/user/${identifier}`);
+      const recipientResponse = await axios.get(`https://bank-db.onrender.com/user/${identifier}`);
       const recipientUsername = recipientResponse.data.username;
 
       // Updated notification message based on operation type
