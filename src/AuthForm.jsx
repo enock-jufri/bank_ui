@@ -35,7 +35,7 @@ const AuthForm = () => {
     setLoading(true);
     setError("");
 
-    const endpoint = isLogin ? "/api/login" : "/api/register";
+    const endpoint = isLogin ? "https://bank-db.onrender.com/login" : "https://bank-db.onrender.com/register";
     const payload = isLogin
       ? { username: formData.username, password: formData.password }
       : formData;
