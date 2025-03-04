@@ -40,12 +40,18 @@ const AuthForm = () => {
       ? { username: formData.username, password: formData.password }
       : formData;
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // Set timeout to 10 seconds
+
     try {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       const text = await response.text();
       let result;
