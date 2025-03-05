@@ -157,36 +157,50 @@ const Dashboard = () => {
 
   const handleTransaction = async (transactionType) => {
     try {
-      const response = await axios.post('https://bank-db.onrender.com/transaction', {
-        username,
-        transaction_type: transactionType,
-        amount: parseFloat(amount),
-        identifier: identifier, // This will contain account number, phone number, or agent number
-        identifier_type: selectedOperation // This tells the backend what type of identifier it is
-      });
-      setBalance(response.data.new_balance);
-      setTransactions([...transactions, {
-        type: transactionType === 'deposit' ? 'Received' : 'Sent',
-        transaction_type: transactionType, // Ensure transaction type is correctly set
-        amount: transactionType === 'deposit' ? parseFloat(amount) : -parseFloat(amount),
-        status: 'completed',
-        timestamp: new Date().toISOString() // Ensure date is correctly formatted
-      }]);
-      fetchTransactionSummary(username); // Refresh the summary data
-      
-      // Fetch recipient details for notification
-      const recipientResponse = await axios.get(`https://bank-db.onrender.com/user/${identifier}`);
-      const recipientUsername = recipientResponse.data.username;
+      if (transactionType === 'deposit') {
+        // Send deposit information to /mpesa/stkpush with only phone_number and amount
+        const response = await axios.post('https://bank-db.onrender.com/mpesa/stkpush', {
+          phone_number: identifier, // Use phone number as identifier
+          amount: parseFloat(amount)
+        });
+      } else {
+        // Handle other transaction types
+        const response = await axios.post('https://bank-db.onrender.com/transaction', {
+          username,
+          transaction_type: transactionType,
+          amount: parseFloat(amount),
+          identifier: identifier, // This will contain account number, phone number, or agent number
+          identifier_type: selectedOperation // This tells the backend what type of identifier it is
+        });
+        setBalance(response.data.new_balance);
+        setTransactions([...transactions, {
+          type: transactionType === 'deposit' ? 'Received' : 'Sent',
+          transaction_type: transactionType, // Ensure transaction type is correctly set
+          amount: transactionType === 'deposit' ? parseFloat(amount) : -parseFloat(amount),
+          status: 'completed',
+          timestamp: new Date().toISOString() // Ensure date is correctly formatted
+        }]);
+        fetchTransactionSummary(username); // Refresh the summary data
 
-      // Updated notification message based on operation type
-      const operationMessage = selectedOperation === 'send' ? `sent to account ${identifier} (${recipientUsername})` :
-                               selectedOperation === 'deposit' ? 'deposited' :
-                               'withdrawn';
-      setNotification(`Successfully ${operationMessage} $${amount}`);
-      setTimeout(() => setNotification(""), 3000);
+        // Fetch recipient details for notification
+        const recipientResponse = await axios.get(`https://bank-db.onrender.com/user/${identifier}`);
+        const recipientUsername = recipientResponse.data.username;
+
+        // Updated notification message based on operation type
+        const operationMessage = selectedOperation === 'send' ? `sent to account ${identifier} (${recipientUsername})` :
+                                 selectedOperation === 'deposit' ? 'deposited' :
+                                 'withdrawn';
+        setNotification(`Successfully ${operationMessage} $${amount}`);
+        setTimeout(() => setNotification(""), 3000);
+      }
     } catch (error) {
       console.error("Error processing transaction:", error);
-      setNotification(`Transaction failed: ${error.response?.data?.message || error.message}`);
+      const errorMessage = error.response?.data?.message || error.message;
+      if (errorMessage.includes("user not found")) {
+        setNotification("User not found. Please check the phone number and try again.");
+      } else {
+        setNotification(`Transaction failed: ${errorMessage}`);
+      }
       setTimeout(() => setNotification(""), 3000);
     }
   };

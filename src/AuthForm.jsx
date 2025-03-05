@@ -35,7 +35,7 @@ const AuthForm = () => {
     setLoading(true);
     setError("");
 
-    if (!validatePhoneNumber(formData.phone)) {
+    if (!isLogin && !validatePhoneNumber(formData.phone)) {
       setError("Invalid phone number. It should be in the format 254 7XXXXXXXX.");
       setLoading(false);
       return;
