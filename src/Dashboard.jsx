@@ -24,6 +24,7 @@ const Dashboard = () => {
   const [accountNumber, setAccountNumber] = useState(""); // Add this line
   const [selectedOperation, setSelectedOperation] = useState(null); // Add new state for selected operation
   const [identifier, setIdentifier] = useState(""); // Add new state for identifier input
+  const [error, setError] = useState(""); // Add state for error messages
 
   const balanceAnimation = useSpring({ number: balance, from: { number: 0 }, reset: true });
 
@@ -201,8 +202,8 @@ const Dashboard = () => {
         setNotification("Invalid amount. Amount must be greater than 1.");
         return;
       }
-      if (identifier.length !== 10) {
-        setNotification("Invalid phone number. Phone number must be 10 digits.");
+      if (!validatePhoneNumber(identifier)) {
+        setNotification("Invalid phone number. It should be in the format 254 7XXXXXXXX.");
         return;
       }
     }
@@ -290,6 +291,11 @@ const Dashboard = () => {
 
   const getChartDimensions = () => {
     return isMobile ? { height: 150 } : { height: 200 };
+  };
+
+  const validatePhoneNumber = (number) => {
+    const regex = /^2547\d{8}$/;
+    return regex.test(number);
   };
 
   if (isLoading) {
@@ -443,7 +449,7 @@ const Dashboard = () => {
                     color: '#81c784',
                     alignSelf: 'flex-start'
                   }}>
-                    from M-PESA
+                    from M-PESA (Use format 254 7XXXXXXXX)
                   </p>
                 )}
                 <input
@@ -464,6 +470,7 @@ const Dashboard = () => {
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                 />
+                {error && <p className="error">{error}</p>}
                 <button 
                   className="process-btn"
                   onClick={handleProcessTransaction}>

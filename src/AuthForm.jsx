@@ -35,6 +35,12 @@ const AuthForm = () => {
     setLoading(true);
     setError("");
 
+    if (!validatePhoneNumber(formData.phone)) {
+      setError("Invalid phone number. It should be in the format 254 7XXXXXXXX.");
+      setLoading(false);
+      return;
+    }
+
     const endpoint = isLogin ? "https://bank-db.onrender.com/login" : "https://bank-db.onrender.com/register";
     const payload = isLogin
       ? { username: formData.username, password: formData.password }
@@ -69,6 +75,11 @@ const AuthForm = () => {
     }
   };
 
+  const validatePhoneNumber = (number) => {
+    const regex = /^2547\d{8}$/;
+    return regex.test(number);
+  };
+
   return (
     <div className="auth-container">
       {isFormVisible && (
@@ -98,7 +109,7 @@ const AuthForm = () => {
                   />
                 </div>
                 <div className="input-group">
-                  <label>Phone Number</label>
+                  <label>Phone Number (Use format 254 7XXXXXXXX)</label>
                   <input
                     type="tel"
                     name="phone"
